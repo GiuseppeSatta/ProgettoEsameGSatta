@@ -10,7 +10,7 @@ public class Esercizio implements Serializable, Comparable<Esercizio> {
                 return BEGINNER;
             if(lvl.equalsIgnoreCase("INTERMEDIATE"))
                 return INTERMEDIATE;
-            if(lvl.equalsIgnoreCase("ADVANCED"))
+            if(lvl.trim().equalsIgnoreCase("ADVANCED"))
                 return ADVANCED;
             throw new EnumConstantNotPresentException(Level.class,lvl);
         }
@@ -90,7 +90,7 @@ public class Esercizio implements Serializable, Comparable<Esercizio> {
     public Esercizio(String ex) {
         if(ex==null)
             throw new NullPointerException();
-        String[] data = ex.split("\t");
+        String[] data = ex.trim().split("\t");
         try {
             muscleGroup = data[0];
             name = data[1];
@@ -118,6 +118,14 @@ public class Esercizio implements Serializable, Comparable<Esercizio> {
 
     @Override
     public String toString() {
-        return name;
+        return "Esercizio{" +
+                "level=" + level +
+                ", name='" + name + '\'' +
+                ", ulc=" + ulc +
+                ", muscleGroup='" + muscleGroup + '\'' +
+                ", pushPull=" + pushPull +
+                ", modality=" + modality +
+                ", joint=" + joint +
+                '}';
     }
 }
