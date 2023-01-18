@@ -1,4 +1,6 @@
-public class Esercizio {
+import java.io.Serializable;
+
+public class Esercizio implements Serializable, Comparable<Esercizio> {
     enum Level{
         BEGINNER,
         INTERMEDIATE,
@@ -79,6 +81,12 @@ public class Esercizio {
         }
     }
     Joint joint;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Esercizio(){}
+
     public Esercizio(String ex) {
         if(ex==null)
             throw new NullPointerException();
@@ -104,17 +112,12 @@ public class Esercizio {
             return false;
         return equals((Esercizio) obj);
     }
+    public int compareTo(Esercizio o){
+        return this.name.compareTo(o.name);
+    }
 
     @Override
     public String toString() {
-        return "Esercizio{" +
-                "level=" + level +
-                ", name='" + name + '\'' +
-                ", ulc=" + ulc +
-                ", muscleGroup='" + muscleGroup + '\'' +
-                ", pushPull=" + pushPull +
-                ", modality=" + modality +
-                ", joint=" + joint +
-                '}';
+        return name;
     }
 }

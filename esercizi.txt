@@ -1,13 +1,3 @@
-"Instructions 
-Select exercises from the list below for the purpose of developing a resistance training or weight training program. Choose exercises that include all the major muscle groups, whether in a full-body circuit format or some other format (e.g., upper body on Day 1, lower body on Day 2, rest on Day 3). To select exercises, simply place an X in column A for those exercises you wish to perform. You can then use the filter function to have just those exercises appear. At this point review your choices to ensure that you have exercises from each of the major muscle groups. Now you can insert these exercises into a Resistance Training Log (such as RM 13-FM). 
-
-Some individuals may choose to begin by using the filter function and sort using the categories indicated: 
-• Level (Beginner, Intermediate, Advanced)
-• U/L/C (U–Upper Body, L–Lower Body, C–Core)
-• P/P (P–Pulling-Type Exercise, P–Pushing-Type Exercise)
-• Modality (FW–Free Weights, C–Cables, M–Machine)
-• Joint (M–Multi-Joint Exercise, S–Single-Joint Exercise)"							
-
 ID	Muscle Group	Exercise	Level	U/L/C	P / P	Modality	Joint
 	Abdominals - Lower	Full Reverse Crunch	Advanced	Core	Push	FW	M
 	Abdominals - Lower	Incline Hip Thrust	Advanced	Core	Push	FW	M
@@ -279,3 +269,12 @@ ID	Muscle Group	Exercise	Level	U/L/C	P / P	Modality	Joint
 	Triceps	Tricep Pushdown	Beginner	Upper	Push	C	S
 	Triceps	Tricep Pushdown	Beginner	Upper	Push	C	S
 	Triceps	V-Bar Tricep Pushdown	Beginner	Upper	Push	C	S
+"Instructions 
+Select exercises from the list below for the purpose of developing a resistance training or weight training program. Choose exercises that include all the major muscle groups, whether in a full-body circuit format or some other format (e.g., upper body on Day 1, lower body on Day 2, rest on Day 3). To select exercises, simply place an X in column A for those exercises you wish to perform. You can then use the filter function to have just those exercises appear. At this point review your choices to ensure that you have exercises from each of the major muscle groups. Now you can insert these exercises into a Resistance Training Log (such as RM 13-FM). 
+
+Some individuals may choose to begin by using the filter function and sort using the categories indicated: 
+• Level (Beginner, Intermediate, Advanced)
+• U/L/C (U–Upper Body, L–Lower Body, C–Core)
+• P/P (P–Pulling-Type Exercise, P–Pushing-Type Exercise)
+• Modality (FW–Free Weights, C–Cables, M–Machine)
+• Joint (M–Multi-Joint Exercise, S–Single-Joint Exercise)"		
