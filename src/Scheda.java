@@ -67,6 +67,11 @@ public class Scheda implements Serializable,Comparable<Scheda> {
 
     @Override
     public String toString() {
-        return esercizi.toString();
+        StringBuilder val= new StringBuilder();
+        val.append(nomeUtente);
+        for(Esercizio i:esercizi){
+            val.append("\n").append(i.getName());
+        }
+        return val.toString();
     }
 }

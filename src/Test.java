@@ -35,15 +35,40 @@ public class Test {
 
         }
 
-        Scheda test=new Scheda("FooBars");
-        test.addEsercizio("Full Reverse Crunch");
-        schede.add(test);
+        if(!schede.isEmpty()){
+            System.out.println("Schede correnti:");
 
-        for(Scheda i:schede){
-            System.out.println(i.toString());
+            for(Scheda i:schede){
+                System.out.println(i.toString());
+            }
         }
+        int i;
+        do {
+            System.out.println("""
+                    Scegliere un'operazione:
+                    0 - Aggiungi nuova scheda
+                    1 - Rimuovi schede
+                    2 - Modifica scheda
+                    3 - Salva e chiudi\s""");
 
-        save(schede);
+            while ((i = scan.nextInt()) < 0 || i > 3) {
+                System.out.println("Scelta non valida;");
+            }
+            switch (i) {
+                case 0:
+                    schede = aggiungiScheda(schede);
+                    break;
+                case 1:
+                    schede = rimuoviSchede(schede);
+                    break;
+                case 2:
+                    schede = modificaScheda(schede);
+                    break;
+                case 3:
+                    save(schede);
+            }
+        } while(i!=3);
+
     }
     static void save(TreeSet<Scheda> schede) {
         try {
@@ -90,5 +115,8 @@ public class Test {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+    static TreeSet<Scheda> aggiungiScheda(TreeSet<Scheda schede>){
+
     }
 }

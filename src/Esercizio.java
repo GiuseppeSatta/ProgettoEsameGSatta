@@ -82,6 +82,10 @@ public class Esercizio implements Serializable, Comparable<Esercizio> {
     }
     Joint joint;
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
