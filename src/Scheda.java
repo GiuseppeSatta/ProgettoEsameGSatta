@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.TreeSet;
 
-public class Scheda implements Serializable,Comparable<Scheda> {
+class Scheda implements Serializable,Comparable<Scheda> {
     TreeSet<Esercizio> esercizi;
     String nomeUtente;
 
@@ -28,7 +28,7 @@ public class Scheda implements Serializable,Comparable<Scheda> {
             BufferedReader r = new BufferedReader(new FileReader("esercizi.txt"));
             String line;
             while((line = r.readLine())!=null) {
-                if (line.contains("\t" + ex + "\t")) {
+                if (line.toUpperCase().contains("\t" + ex.toUpperCase() + "\t")) {
                     return esercizi.add(new Esercizio(line));
                 }
             }
