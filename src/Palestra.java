@@ -43,7 +43,7 @@ public class Palestra {
 
     }
 
-    static TreeSet<Scheda> loadSchede(){
+    synchronized static TreeSet<Scheda> loadSchede(){
         try {
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("schede.dat"));
             @SuppressWarnings("unchecked") TreeSet<Scheda> schede=(TreeSet<Scheda>)inputStream.readObject();
@@ -71,7 +71,7 @@ public class Palestra {
         }
     }
 
-    static String save(TreeSet<Scheda> schede) {
+    synchronized static String save(TreeSet<Scheda> schede) {
         try {
 
             File file=new File("schede.dat");
@@ -117,7 +117,7 @@ public class Palestra {
             outputStream.writeObject(schede);
             return FINE;
         } catch (IOException e){
-            e.printStackTrace();
+            System.out.println("Impossibile salvare");
             return ANNULLA;
         }
     }
