@@ -160,7 +160,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
 
                 filtri.append(filtro).append(",\n");
                 if (!risultato.isEmpty()) {
-                    removeFiltro(filtro, risultato);
+                    removeFiltrati(filtro, risultato);
                 }
 
             }
@@ -171,7 +171,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
                 System.out.println("Filtri:\n"+filtri.substring(0,(filtri.toString().length())-2));
         }
     }
-    private static ArrayList<String> inzializzaLista(){
+    synchronized private static ArrayList<String> inzializzaLista(){
         String line;
         ArrayList<String> lines=new ArrayList<>();
         try {
@@ -191,7 +191,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         }
         return lines;
     }
-    private static void removeFiltro(String filtro, ArrayList<String> risultato){
+    private static void removeFiltrati(String filtro, ArrayList<String> risultato){
         final String fil=filtro;
         Predicate<String> predicate= s -> !s.contains(fil);
         risultato.removeIf(predicate);
