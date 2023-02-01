@@ -8,7 +8,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         BEGINNER,
         INTERMEDIATE,
         ADVANCED;
-        public static Level getLevel(String lvl) throws EnumConstantNotPresentException{
+        static Level getLevel(String lvl) throws EnumConstantNotPresentException{
             if(lvl.equalsIgnoreCase("BEGINNER"))
                 return BEGINNER;
             if(lvl.equalsIgnoreCase("INTERMEDIATE"))
@@ -25,7 +25,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         UPPER,
         LOWER;
 
-        public static ULC getULC(String ulc) throws EnumConstantNotPresentException {
+        static ULC getULC(String ulc) throws EnumConstantNotPresentException {
             if (ulc.equalsIgnoreCase("CORE"))
                 return CORE;
             if (ulc.equalsIgnoreCase("UPPER"))
@@ -42,7 +42,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         PULL,
         STATIC;
 
-        public static PushPull getPushPull(String pushPull) throws EnumConstantNotPresentException {
+        static PushPull getPushPull(String pushPull) throws EnumConstantNotPresentException {
             if (pushPull.equalsIgnoreCase("PUSH"))
                 return PUSH;
             if (pushPull.equalsIgnoreCase("PULL"))
@@ -58,7 +58,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         FW,
         M;
 
-        public static Modality getModality(String modality) throws EnumConstantNotPresentException {
+        static Modality getModality(String modality) throws EnumConstantNotPresentException {
             if (modality.equalsIgnoreCase("C"))
                 return C;
             if (modality.equalsIgnoreCase("FW"))
@@ -75,7 +75,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         M,
         S;
 
-        public static Joint getJoint(String joint) throws EnumConstantNotPresentException {
+        static Joint getJoint(String joint) throws EnumConstantNotPresentException {
             if (joint.equalsIgnoreCase("M"))
                 return M;
             if (joint.equalsIgnoreCase("S"))
@@ -85,16 +85,16 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
     }
     Joint joint;
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
-    public Esercizio(){}
+    Esercizio(){}
 
-    public Esercizio(String ex) {
+    Esercizio(String ex) {
         if(ex==null)
             throw new NullPointerException();
         String[] data = ex.trim().split("\t");
@@ -107,10 +107,11 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
             modality = Modality.getModality(data[5]);
             joint = Joint.getJoint(data[6]);
         } catch (EnumConstantNotPresentException | ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
+            System.out.println("ERRORE: File 'esercizi.txt' non valido o corrotto");
+            System.exit(0);
         }
     }
-    public boolean equals(Esercizio ex){
+    boolean equals(Esercizio ex){
         return name.equals(ex.name);
     }
     @Override
@@ -136,7 +137,7 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
                 '}';
     }
 
-    public static void listaEsercizi(){
+    static void listaEsercizi(){
         Scanner scan=new Scanner(System.in);
         String filtro;
         StringBuilder filtri= new StringBuilder();
@@ -145,9 +146,6 @@ class Esercizio implements Serializable, Comparable<Esercizio> {
         if(risultato.isEmpty())
             return;
 
-        for(String i:risultato){
-            System.out.println(i);
-        }
 
         while(!((filtro= scan.nextLine()).equalsIgnoreCase("INDIETRO"))){
             if(filtro.length()==1)

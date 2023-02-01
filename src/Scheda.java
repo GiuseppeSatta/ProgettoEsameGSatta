@@ -5,25 +5,21 @@ class Scheda implements Serializable,Comparable<Scheda> {
     TreeSet<Esercizio> esercizi;
     String nomeUtente;
 
-    public Scheda(){
+    Scheda(){
         esercizi=new TreeSet<>();
     }
 
-    public Scheda(String newName, Scheda s){
+    Scheda(String newName, Scheda s){
         esercizi=new TreeSet<>(s.esercizi);
         nomeUtente=newName;
     }
 
-    public Scheda(String newName){
+    Scheda(String newName){
         esercizi=new TreeSet<>();
         nomeUtente=newName;
     }
 
-    public boolean addEsercizio(Esercizio ex){
-        return esercizi.add(ex);
-    }
-
-    public boolean addEsercizio(String ex){
+    boolean addEsercizio(String ex){
         try {
             BufferedReader r = new BufferedReader(new FileReader("esercizi.txt"));
             String line;
@@ -43,11 +39,7 @@ class Scheda implements Serializable,Comparable<Scheda> {
         return false;
     }
 
-    public boolean removeEsercizio(Esercizio ex){
-        return esercizi.remove(ex);
-    }
-
-    public boolean removeEsercizio(String ex){
+    boolean removeEsercizio(String ex){
         Esercizio test=new Esercizio();
         test.setName(ex);
         return esercizi.remove(test);

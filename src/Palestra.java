@@ -7,38 +7,13 @@ public class Palestra {
     private static final String ANNULLA = "0";
     private static final String FINE = "4";
     public static void main(String[] args) {
-        TreeSet<Scheda> schede;
-        try {
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("schede.dat"));
-            schede=(TreeSet<Scheda>)inputStream.readObject();
-            inputStream.close();
 
-        }catch (FileNotFoundException e){
-            schede=new TreeSet<>();
+        TreeSet<Scheda> schede=loadSchede();
 
-        }catch (IOException | ClassNotFoundException e){
-            e.printStackTrace();
-            return;
-
-        } catch (ClassCastException e){
-            System.out.println("Il file 'schede.dat' non e' valido, sovrascrivere? (S/N)");
-
-            if(scan.nextLine().toUpperCase().charAt(0)=='N'){
-                System.out.println("Terminazione programma");
-                return;
-            }
-
-            File del=new File("schede.dat");
-            if(!del.delete()) {
-                System.out.println("Impossibile sovrascrivere");
-                return;
-            }
-            schede=new TreeSet<>();
-
-        }
 
         if(!schede.isEmpty()){
             System.out.println("Schede correnti:");
+
 
             for(Scheda i:schede){
                 System.out.println(i.toString());
@@ -67,6 +42,35 @@ public class Palestra {
         } while(!i.equals("4"));
 
     }
+
+    static TreeSet<Scheda> loadSchede(){
+        try {
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("schede.dat"));
+            @SuppressWarnings("unchecked") TreeSet<Scheda> schede=(TreeSet<Scheda>)inputStream.readObject();
+            inputStream.close();
+            return schede;
+
+        }catch (FileNotFoundException e){
+            return new TreeSet<>();
+
+        }catch (IOException | ClassNotFoundException | ClassCastException e){
+            System.out.println("Il file 'schede.dat' non e' valido, sovrascrivere? (S/N)");
+
+            if(scan.nextLine().toUpperCase().charAt(0)=='N'){
+                System.out.println("Terminazione programma");
+                System.exit(0);
+            }
+
+            File del=new File("schede.dat");
+            if(!del.delete()) {
+                System.out.println("Impossibile sovrascrivere");
+                System.exit(0);
+            }
+            return new TreeSet<>();
+
+        }
+    }
+
     static String save(TreeSet<Scheda> schede) {
         try {
 
@@ -134,6 +138,11 @@ public class Palestra {
     }
     static TreeSet<Scheda> rimuoviSchede(TreeSet<Scheda> schede){
 
+        if(schede.isEmpty()){
+            System.out.println("Non e' presente nessuna scheda");
+            return schede;
+        }
+
         TreeSet<Scheda> temp=new TreeSet<>(schede);
         String scheda;
 
@@ -158,6 +167,12 @@ public class Palestra {
         return schede;
     }
     static TreeSet<Scheda> modificaScheda(TreeSet<Scheda> schede){
+
+        if(schede.isEmpty()){
+            System.out.println("Non e' presente nessuna scheda");
+            return schede;
+        }
+
         System.out.println("Inserire il nome della scheda da modificare.\n" +
                 "Per annullare, digitare ANNULLA");
         String nomeScheda=scan.nextLine();
@@ -187,6 +202,10 @@ public class Palestra {
         return schede;
     }
     static void copiaScheda(TreeSet<Scheda> schede){
+        if(schede.isEmpty()){
+            System.out.println("Non e' presente nessuna scheda");
+            return;
+        }
         String nomeScheda;
         boolean test;
         do {
